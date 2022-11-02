@@ -34,7 +34,7 @@ class ListDrinks extends StatelessWidget {
                 itemCount: 20,
                 itemBuilder: (context, item ) => Container(
                   child:  ListTile(
-                    leading: Text('${state.loadedDrink[item].strDrinkThumb}'),
+                    leading: Text('${state.loadedDrink[item].strDrink}'),
                   ),
                 ),
               ),
