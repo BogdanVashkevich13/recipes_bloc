@@ -17,7 +17,7 @@ class ListDrinks extends StatelessWidget {
     return BlocBuilder<DrinkBloc, DrinkState>(
         builder: (context, state) {
           if (state is DrinkEmptyState){
-            return Text('no data');
+            return const Text('no data');
           }
           if (state is DrinkLoadingState){
             return const Center(
@@ -28,14 +28,12 @@ class ListDrinks extends StatelessWidget {
             return Scaffold(
               appBar: AppBar(
                 centerTitle: true,
-                title: Text('Alcohol'),
+                title: const Text('Alcohol'),
               ),
               body:  ListView.builder(
                 itemCount: 20,
-                itemBuilder: (context, item ) => Container(
-                  child:  ListTile(
-                    leading: Text('${state.loadedDrink[item].strDrink}'),
-                  ),
+                itemBuilder: (context, item ) => ListTile(
+                  leading: Text(state.loadedDrink[item].strDrink),
                 ),
               ),
             );
