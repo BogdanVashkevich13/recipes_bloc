@@ -11,7 +11,7 @@ class DrinkBloc extends Bloc<DrinkEvent, DrinkState> {
       emit(DrinkLoadingState());
 
       try{
-       final List<DrinkOption> loadedDrinkList = await Reposytory.getDrinkOptions();
+       final List<DrinkOption> loadedDrinkList = await Reposytory.getDrinkOptions('');
        emit(DrinkLoadedState(loadedDrink: loadedDrinkList));
       }catch (_){
         emit(DrinkErorState());

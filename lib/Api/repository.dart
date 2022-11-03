@@ -4,7 +4,7 @@ import 'drink_option.dart';
 class Repository {
   DrinkApiProvider _drinkApiProvider = DrinkApiProvider();
 
-  Future<List<DrinkOption>> getDrinkOptions() {
-    return _drinkApiProvider.getDrinkOptions();
+  Future<List<DrinkOption>> getDrinkOptions(String search) {
+    return _drinkApiProvider.getDrinkOptions(search);
   }
 }

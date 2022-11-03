@@ -1,13 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:page_transition/page_transition.dart';
-import 'package:recipes_bloc/Api/repository.dart';
 import 'package:recipes_bloc/bloc/drink_bloc.dart';
 import 'package:recipes_bloc/bloc/drink_state.dart';
-import '../Colors/colors.dart';
-import 'drink_details.dart';
-import '../Api/drink_option.dart';
 
 class ListDrinks extends StatelessWidget {
   const ListDrinks({Key? key}) : super(key: key);
@@ -15,71 +10,37 @@ class ListDrinks extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<DrinkBloc, DrinkState>(
-        builder: (context, state) {
-          if (state is DrinkEmptyState){
-            return const Text('no data');
-          }
-          if (state is DrinkLoadingState){
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
-          }
-          if (state is DrinkLoadedState){
-            return Scaffold(
-              appBar: AppBar(
-                centerTitle: true,
-                title: const Text('Alcohol'),
+      builder: (context, state) {
+        if (state is DrinkEmptyState) {
+          return const Text('no data');
+        }
+        if (state is DrinkLoadingState) {
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        }
+        if (state is DrinkLoadedState) {
+          return Scaffold(
+            appBar: AppBar(
+              centerTitle: true,
+              title: const Text('Alcohol'),
+            ),
+            body: ListView.builder(
+              itemCount: 20,
+              itemBuilder: (context, item) => ListTile(
+                leading: Text(state.loadedDrink[item].idDrink),
               ),
-              body:  ListView.builder(
-                itemCount: 20,
-                itemBuilder: (context, item ) => ListTile(
-                  leading: Text(state.loadedDrink[item].idDrink),
-                ),
-              ),
-            );
-          }
-          if (state is DrinkErorState){
-            return const Text('Failed to load internet ');
-          }
-          return const SizedBox.shrink();
-        },
+            ),
+          );
+        }
+        if (state is DrinkErorState) {
+          return const Text('Failed to load internet ');
+        }
+        return const SizedBox.shrink();
+      },
     );
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // class ListDrinks extends StatefulWidget {
 //   final String search;
