@@ -33,7 +33,7 @@ class ListDrinks extends StatelessWidget {
               body:  ListView.builder(
                 itemCount: 20,
                 itemBuilder: (context, item ) => ListTile(
-                  leading: Text(state.loadedDrink[item].strDrink),
+                  leading: Text(state.loadedDrink[item].idDrink),
                 ),
               ),
             );
