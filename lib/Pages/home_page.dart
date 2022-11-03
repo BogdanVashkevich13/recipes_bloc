@@ -35,12 +35,12 @@ class HomePage extends StatelessWidget {
             centerTitle: true,
             backgroundColor: ColorsSet.red,
           ),
-          backgroundColor: Colors.black,
+          backgroundColor: Colors.white,
           body: Stack(
             textDirection: TextDirection.ltr,
             children:<Widget> [
               Container(
-                child: const Background(),
+                child: const ListDrinks(),
               ),
               Container(
                 padding: EdgeInsets.only(left: 20, top: 30),
